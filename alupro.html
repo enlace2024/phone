@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Registration - Enlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            padding: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            gap: 3rem;
+            padding: 2rem;
+        }
+
+        .info-section {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            color: #1e293b;
+            margin-top: 2rem;
+        }
+
+        .info-section h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #0a66c2, #00a0dc);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(10, 102, 194, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: #0a66c2;
+        }
+
+        .form-section {
+            flex: 1;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #0a66c2, #00a0dc);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        input:focus, select:focus {
+            border-color: #0a66c2;
+            box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+            outline: none;
+        }
+
+        .upload-box {
+            display: block;
+            border: 2px dashed #e2e8f0;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+
+        .upload-box:hover {
+            border-color: #0a66c2;
+            background: rgba(10, 102, 194, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            color: #0a66c2;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-box input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .upload-box p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .upload-box:hover .upload-icon {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, #0a66c2, #00a0dc);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(10, 102, 194, 0.3);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                max-width: 700px;
+            }
+
+            .info-section {
+                margin-top: 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .form-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info-section">
+            <h1>Join Our Alumni Network</h1>
+            <p>Connect with your alma mater and help shape the future of education.</p>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <div class="feature-icon">🎓</div>
+                    <div>
+                        <h3>Professional Network</h3>
+                        <p>Connect with fellow alumni</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">💼</div>
+                    <div>
+                        <h3>Mentorship</h3>
+                        <p>Guide current students</p>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <div>
+                        <h3>Opportunities</h3>
+                        <p>Share job openings and internships</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-section">
+            <h2>Alumni Registration</h2>
+            <form id="alumni-signup">
+                <div class="form-group">
+                    <input type="text" id="Name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phoneno" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Create Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="pass" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-group">
+                    <select id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="graduation_year" placeholder="Graduation Year" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="branch" placeholder="Branch & Section" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="reg" placeholder="Register Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="Professionalstatus" placeholder="Current Professional Status" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="Description" placeholder="Current Job Role" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="Location" placeholder="Current Location" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="Experience" placeholder="Years of Experience" required>
+                </div>
+                <div class="form-group">
+                    <div class="upload-box">
+                        <div class="upload-icon">📸</div>
+                        <p>Click to upload profile picture</p>
+                        <input type="file" id="profile-pic" accept="image/*">
+                    </div>
+                </div>
+                <button type="submit">Create Alumni Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCysdmrWW2SFOo66GwPrZ4YSXcUFBeC88Y", // Add your Firebase API key here
+            authDomain: "enlace-4ce34.firebaseapp.com",
+            projectId: "enlace-4ce34",
+            storageBucket: "enlace-4ce34.appspot.com",
+            messagingSenderId: "574294679657",
+            appId: "1:574294679657:web:13e33ac4a4b01da3c902f8",
+            measurementId: "G-PKMKGNVDSK"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        document.getElementById('alumni-signup').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fullname = document.getElementById('Name').value;
+            const email = document.getElementById('email').value;
+            const phoneno=document.getElementById('phoneno').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('pass').value;
+            const gender = document.getElementById('gender').value;
+            const graduationYear = document.getElementById('graduation_year').value;
+            const branch = document.getElementById('branch').value;
+            const rollNo = document.getElementById('reg').value;
+            const professionalStatus = document.getElementById('Professionalstatus').value;
+            const location = document.getElementById('Location').value;
+            const experience = document.getElementById('Experience').value;
+            const description = document.getElementById('Description').value;
+            const file = document.getElementById('profile-pic').files[0];
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                let profilePicUrl = "";
+
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("file", file);
+                    formData.append("upload_preset", "jl2tyfnn");
+
+                    const response = await fetch("https://api.cloudinary.com/v1_1/drvergqru/image/upload", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    const data = await response.json();
+                    profilePicUrl = data.secure_url;
+                } else {
+                    profilePicUrl = gender === "Male" ? "male.jpg" : "female.jpg";
+                }
+
+                await setDoc(doc(db, "alumni", user.uid), {
+                    fullname,
+                    email,
+                    phoneno,
+                    gender,
+                    graduationYear,
+                    branch,
+                    rollNo,
+                    professionalStatus,
+                    location,
+                    experience,
+                    description,
+                    profilePicUrl,
+                    createdAt: new Date()
+                });
+
+                alert('Registration successful!');
+                window.location.href = 'front.html';
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
